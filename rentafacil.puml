@@ -1,0 +1,66 @@
+@startuml
+class TiendaDeparmental
+class RentaFácil
+class Vehiculo 
+class placa
+class marca
+class modelo
+class año
+class PrecioPorDia
+class Auto
+class Moto 
+class cilindrada
+class Camioneta 
+class capacidadCarga
+class Cliente
+class id
+class nombre
+class dni
+class telefono
+class Alquiler 
+class codigo
+class fechaInicio
+class fechaFin
+class costoTotal
+class estado
+class GestorAlquiler
+class EstadoAlquiler {
+ +ACTIVO ()
+ -FINALIZADO 
+}
+
+RentaFácil --|>TiendaDeparmental
+Auto --|> Vehiculo
+Moto --|> Vehiculo
+Camioneta --|> Vehiculo
+
+RentaFácil *-- Vehiculo
+RentaFácil *-- GestorAlquiler 
+
+
+Vehiculo *-- placa
+Vehiculo *-- marca
+Vehiculo *-- modelo
+Vehiculo *-- año
+Vehiculo *-- PrecioPorDia
+Moto *-- cilindrada
+Camioneta *-- capacidadCarga
+Cliente *-- id
+Cliente *--  nombre
+Cliente *--  dni
+Cliente *--  telefono
+Alquiler *-- codigo
+Alquiler *--  fechaInicio
+Alquiler *--  fechaFin
+Alquiler *--  costoTotal
+Alquiler *--  estado
+
+GestorAlquiler "1" *-- "1..*" Cliente
+GestorAlquiler "1" *-- "1..3" Vehiculo 
+GestorAlquiler "1" *-- "1..*" Alquiler
+
+Cliente "1" *-- "0..*" Alquiler
+Alquiler "1" *-- "1..*" Vehiculo
+
+Alquiler *.. EstadoAlquiler 
+@enduml
